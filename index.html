@@ -3,18 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="HSE Knowledge Hub provides practical Health, Safety and Environmental knowledge, workplace safety awareness and useful HSE resources.">
   <title>HSE Knowledge Hub | Learn. Prevent. Protect.</title>
-  <meta name="description"
-        content="HSE Knowledge Hub provides practical Health, Safety and Environmental knowledge, toolbox talks, quizzes and useful workplace safety resources.">
 
-<style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+  <style>
     :root {
       --green: #087f5b;
       --dark-green: #075b43;
@@ -25,505 +17,445 @@
       --light: #f7f9fa;
       --white: #ffffff;
       --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(23, 32, 42, 0.08);
+      --radius: 16px;
     }
 
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--dark);
       background: var(--white);
       line-height: 1.6;
     }
 
-    /* NAVIGATION */
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
 
     header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
     }
 
     .nav {
-      max-width: 1150px;
-      margin: auto;
-      padding: 16px 20px;
+      min-height: 72px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .logo {
+    .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: bold;
-      font-size: 20px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--dark-green);
     }
 
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: var(--green);
-      color: white;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
-    }
+    .brand-mark { font-size: 1.7rem; }
 
-    nav a {
-      text-decoration: none;
-      color: #344054;
-      margin-left: 22px;
-      font-size: 14px;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
       font-weight: 600;
+      font-size: 0.95rem;
     }
 
-    nav a:hover {
-      color: var(--green);
-    }
-
-    /* HERO */
+    nav a:hover { color: var(--green); }
 
     .hero {
       background:
-        linear-gradient(135deg, rgba(7,91,67,.96), rgba(8,127,91,.90)),
-        radial-gradient(circle at top right, #f4c430, transparent 30%);
-      color: white;
-      padding: 90px 20px;
+        radial-gradient(circle at 85% 20%, rgba(244,196,48,0.20), transparent 28%),
+        linear-gradient(135deg, var(--light-green), #ffffff 65%);
+      padding: 82px 0 72px;
     }
 
-    .hero-content {
-      max-width: 1150px;
-      margin: auto;
+    .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 50px;
       align-items: center;
     }
 
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 64px);
-      line-height: 1.05;
-      margin-bottom: 20px;
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--white);
+      border: 1px solid #cdeadd;
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: 800;
     }
 
-    .hero h1 span {
-      color: var(--yellow);
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -2px;
     }
+
+    .hero h1 span { color: var(--green); }
 
     .hero p {
-      font-size: 19px;
-      max-width: 650px;
-      color: #eaf8f3;
-      margin-bottom: 30px;
+      max-width: 680px;
+      margin: 0 0 28px;
+      color: var(--gray);
+      font-size: 1.12rem;
     }
 
     .buttons {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
       display: inline-block;
-      padding: 13px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+      padding: 13px 19px;
+      border-radius: 10px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
     .btn-primary {
-      background: var(--yellow);
-      color: #1c1c1c;
+      background: var(--green);
+      color: var(--white);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,.5);
-      color: white;
+      background: var(--white);
+      border: 1px solid var(--border);
     }
 
     .hero-card {
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 18px;
-      padding: 30px;
-      backdrop-filter: blur(8px);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
     }
 
-    .hero-card h3 {
-      margin-bottom: 15px;
-      font-size: 22px;
+    .hero-card h2 {
+      margin-top: 0;
+      color: var(--dark-green);
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
 
     .hero-card li {
-      list-style: none;
-      padding: 8px 0;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    /* GENERAL */
+    .hero-card li:last-child { border-bottom: 0; }
 
-    .section {
-      padding: 75px 20px;
-    }
+    .section { padding: 72px 0; }
 
-    .container {
-      max-width: 1150px;
-      margin: auto;
-    }
+    .section.alt { background: var(--light); }
 
     .section-heading {
+      max-width: 720px;
+      margin: 0 auto 36px;
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 45px;
     }
 
     .section-heading h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      font-size: 2rem;
     }
 
     .section-heading p {
+      margin: 0;
       color: var(--gray);
     }
-
-    /* CARDS */
 
     .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
 
     .card {
+      padding: 24px;
+      background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px;
-      background: white;
-      transition: .2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.08);
-      border-color: #b7dfd0;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(23,32,42,0.04);
     }
 
     .card-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      background: var(--light-green);
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      font-size: 25px;
-      margin-bottom: 18px;
+      border-radius: 12px;
+      background: var(--light-green);
+      font-size: 1.45rem;
+      margin-bottom: 16px;
     }
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+    .card h3 { margin: 0 0 8px; }
 
     .card p {
       color: var(--gray);
-      font-size: 14px;
+      margin: 0 0 16px;
+      font-size: 0.94rem;
     }
 
-    .card a {
-      display: inline-block;
-      margin-top: 15px;
+    .card-link {
       color: var(--green);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
+      font-weight: 800;
     }
-
-    /* SAFETY TIP */
-
-    .tip {
-      background: var(--light-green);
-    }
-
-    .tip-box {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      border-left: 6px solid var(--yellow);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 8px 25px rgba(0,0,0,.05);
-    }
-
-    .tip-box h3 {
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-
-    /* TOPICS */
 
     .topics {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
     }
 
     .topic {
-      background: #f2f4f7;
+      padding: 17px 18px;
       border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 10px 17px;
-      font-size: 14px;
-      font-weight: 600;
+      border-radius: 12px;
+      background: var(--white);
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
-    /* CTA */
+    .topic:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .topic.active {
+      border-color: #b9dfd0;
+      background: var(--light-green);
+      color: var(--dark-green);
+    }
+
+    .tip-box {
+      background: var(--dark-green);
+      color: var(--white);
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .tip-box h2 { margin-top: 0; }
+
+    .tip-box p {
+      margin-bottom: 0;
+      color: #e8f7f1;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .article-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .article-icon {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .article-card h3 { margin: 0 0 8px; }
+
+    .article-card p {
+      color: var(--gray);
+      margin: 0 0 16px;
+      font-size: 0.93rem;
+    }
+
+    .article-card span {
+      color: var(--green);
+      font-weight: 800;
+    }
 
     .cta {
-      background: var(--dark-green);
-      color: white;
       text-align: center;
+      background: var(--light-green);
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: 2rem;
     }
 
     .cta p {
-      color: #d9eee7;
-      max-width: 650px;
-      margin: 12px auto 25px;
+      max-width: 700px;
+      margin: 0 auto 24px;
+      color: var(--gray);
     }
 
-    /* FOOTER */
-
     footer {
-      background: #111827;
-      color: #cbd5e1;
-      padding: 45px 20px 20px;
+      background: #10231d;
+      color: #dce9e5;
+      padding: 48px 0 20px;
     }
 
     .footer-grid {
-      max-width: 1150px;
-      margin: auto;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 1.4fr 1fr 1fr;
       gap: 40px;
+      margin-bottom: 34px;
     }
 
     footer h3 {
-      color: white;
-      margin-bottom: 12px;
+      color: var(--white);
+      margin-top: 0;
+    }
+
+    footer p {
+      color: #b7c9c3;
+      max-width: 460px;
     }
 
     footer a {
       display: block;
-      color: #cbd5e1;
-      text-decoration: none;
-      margin: 6px 0;
-      font-size: 14px;
+      margin: 9px 0;
+      color: #dce9e5;
     }
 
-    footer a:hover {
-      color: var(--yellow);
-    }
+    footer a:hover { color: var(--yellow); }
 
     .copyright {
-      max-width: 1150px;
-      margin: 35px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #374151;
-      font-size: 13px;
-      color: #9ca3af;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: #9fb4ad;
+      font-size: 0.85rem;
     }
 
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+    .coming-soon {
+      cursor: default;
+      opacity: 0.82;
     }
 
-    @media (max-width: 550px) {
-      .hero {
-        padding: 65px 20px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .section {
-        padding: 55px 20px;
-      }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .cards, .articles { grid-template-columns: repeat(2, 1fr); }
+      .topics { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
-.articles {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
 
-.articles h2 {
-  text-align: center;
-  color: #075b43;
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.section-intro {
-  text-align: center;
-  color: #667085;
-  margin-bottom: 30px;
-}
-
-.article-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.article-card {
-  display: block;
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  text-decoration: none;
-  color: #17202a;
-  box-shadow: 0 5px 18px rgba(0,0,0,.04);
-  transition: transform .2s, box-shadow .2s;
-}
-
-.article-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.10);
-}
-
-.article-icon {
-  font-size: 35px;
-  margin-bottom: 10px;
-}
-
-.article-card h3 {
-  color: #075b43;
-  margin: 5px 0 10px;
-}
-
-.article-card p {
-  color: #667085;
-}
-
-.article-card span {
-  color: #087f5b;
-  font-weight: bold;
-}
-
-@media (max-width: 650px) {
-
-  .article-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
+    @media (max-width: 620px) {
+      .nav { padding: 12px 0; }
+      nav { gap: 12px; font-size: 0.82rem; }
+      .hero { padding: 58px 0; }
+      .section { padding: 55px 0; }
+      .cards, .articles, .topics, .footer-grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1px; }
+      .buttons { flex-direction: column; }
+      .btn { text-align: center; }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
-  <header>
-    <div class="nav">
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">🦺</span>
+      <span>HSE Knowledge Hub</span>
+    </a>
 
-      <a href="#" class="logo">
-        <div class="logo-icon">🦺</div>
-        HSE Knowledge Hub
-      </a>
+    <nav aria-label="Main navigation">
+      <a href="#topics">Topics</a>
+      <a href="#resources">Resources</a>
+      <a href="#articles">Articles</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
 
-      <nav>
-        <a href="#topics">Topics</a>
-        <a href="#resources">Resources</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#about">About</a>
-      </nav>
-
-    </div>
-  </header>
-
+<main>
 
   <!-- HERO -->
   <section class="hero">
-
-    <div class="hero-content">
+    <div class="container hero-grid">
 
       <div>
-        <h1>
-          Learn.<br>
-          <span>Prevent.</span><br>
-          Protect.
-        </h1>
+        <span class="eyebrow">Practical HSE Awareness</span>
+        <h1>Learn. <span>Prevent.</span> Protect.</h1>
 
         <p>
-          Practical Health, Safety & Environmental knowledge
-          for safer workplaces and stronger safety cultures.
+          Practical Health, Safety and Environmental knowledge for
+          safer workplaces and stronger safety cultures.
         </p>
 
         <div class="buttons">
-          <a href="hse-basics.html" class="btn btn-primary">
-  Explore HSE Topics
-</a>
-
-          <a href="#quiz" class="btn btn-secondary">
-            Take the Quiz
-          </a>
+          <a href="#topics" class="btn btn-primary">Explore HSE Topics</a>
+          <a href="#articles" class="btn btn-secondary">Read HSE Articles</a>
         </div>
       </div>
 
       <div class="hero-card">
-
-        <h3>🛡️ What you'll find here</h3>
-
+        <h2>What you'll find here</h2>
         <ul>
           <li>✓ Practical HSE knowledge</li>
-          <li>✓ Toolbox talks</li>
-          <li>✓ Safety checklists</li>
-          <li>✓ HSE quizzes</li>
-          <li>✓ Workplace safety articles</li>
-          <li>✓ Educational resources</li>
+          <li>✓ Workplace safety awareness</li>
+          <li>✓ Toolbox talk ideas</li>
+          <li>✓ HSE quizzes and knowledge checks</li>
+          <li>✓ Useful educational resources</li>
         </ul>
-
       </div>
 
     </div>
-
   </section>
 
-
-  <!-- MAIN FEATURES -->
+  <!-- RESOURCES -->
   <section class="section" id="resources">
-
     <div class="container">
 
       <div class="section-heading">
         <h2>HSE Knowledge & Resources</h2>
         <p>
-          Simple and practical resources to help improve
-          safety awareness and workplace knowledge.
+          Simple and practical resources to help improve safety awareness
+          and workplace knowledge.
         </p>
       </div>
-
 
       <div class="cards">
 
@@ -531,484 +463,202 @@
           <div class="card-icon">🦺</div>
           <h3>Safety Topics</h3>
           <p>
-            Learn about common workplace hazards,
-            risks and control measures.
+            Explore common workplace hazards, risks and safety controls.
           </p>
-          <a href="#topics">Explore Topics →</a>
+          <a class="card-link" href="#topics">Explore Topics →</a>
         </div>
-
 
         <div class="card">
           <div class="card-icon">📋</div>
           <h3>Toolbox Talks</h3>
           <p>
-            Short and practical safety topics
-            for worker awareness sessions.
+            Short, practical safety subjects for worker awareness sessions.
           </p>
-          <a href="#">View Toolbox Talks →</a>
+          <span class="card-link coming-soon">Coming Soon</span>
         </div>
-
 
         <div class="card">
           <div class="card-icon">📚</div>
           <h3>HSE Resources</h3>
           <p>
-            Useful checklists, templates and
-            educational materials.
+            Useful checklists, templates and educational materials.
           </p>
-          <a href="#">View Resources →</a>
+          <span class="card-link coming-soon">Coming Soon</span>
         </div>
 
-
-        <div class="card" id="quiz">
+        <div class="card">
           <div class="card-icon">🧠</div>
           <h3>HSE Quiz</h3>
           <p>
-            Test your safety knowledge and
-            improve your awareness.
+            Test your safety knowledge and improve your awareness.
           </p>
-          <a href="#">Start Quiz →</a>
+          <span class="card-link coming-soon">Coming Soon</span>
         </div>
 
       </div>
-
     </div>
-
   </section>
-
 
   <!-- SAFETY TIP -->
-  <section class="section tip">
-
+  <section class="section alt">
     <div class="container">
-
       <div class="tip-box">
-
-        <h3>🛑 Safety Tip of the Day</h3>
-
+        <h2>🛑 Safety Tip</h2>
         <p>
-          Before starting a task, stop and think about what
-          could go wrong. Identify the hazards, understand
-          the controls and make sure you are prepared to
-          perform the work safely.
+          Before starting a task, stop and think about what could go wrong.
+          Identify the hazards, understand the controls and make sure you
+          are prepared to perform the work safely.
         </p>
-
       </div>
-
     </div>
-
   </section>
-
 
   <!-- TOPICS -->
   <section class="section" id="topics">
-
     <div class="container">
 
       <div class="section-heading">
-
         <h2>Popular HSE Topics</h2>
-
         <p>
-          Explore practical information about common
-          workplace safety and environmental subjects.
+          Start with the topics currently available in the HSE Knowledge Hub.
+          More topics can be added as the site grows.
         </p>
-
       </div>
-
 
       <div class="topics">
 
-  <a href="hazard-vs-risk.html" class="topic">
-    Hazard & Risk
-  </a>
+        <a href="hse-basics.html" class="topic active">🦺 HSE Basics</a>
+        <a href="hazard-vs-risk.html" class="topic active">⚠️ Hazard & Risk</a>
+        <a href="ppe.html" class="topic active">🪖 PPE</a>
+        <a href="situational-awareness.html" class="topic active">👀 Situational Awareness</a>
 
-  <a href="hse-basics.html" class="topic">
-    HSE Basics
-  </a>
+        <span class="topic coming-soon">Working at Height — Coming Soon</span>
+        <span class="topic coming-soon">Confined Space — Coming Soon</span>
+        <span class="topic coming-soon">Fire Safety — Coming Soon</span>
+        <span class="topic coming-soon">Electrical Safety — Coming Soon</span>
+        <span class="topic coming-soon">Risk Assessment — Coming Soon</span>
+        <span class="topic coming-soon">LOTO — Coming Soon</span>
+        <span class="topic coming-soon">Lifting & Rigging — Coming Soon</span>
+        <span class="topic coming-soon">Excavation Safety — Coming Soon</span>
+        <span class="topic coming-soon">Scaffolding — Coming Soon</span>
+        <span class="topic coming-soon">Chemical Safety — Coming Soon</span>
+        <span class="topic coming-soon">Heat Stress — Coming Soon</span>
+        <span class="topic coming-soon">Manual Handling — Coming Soon</span>
+        <span class="topic coming-soon">Emergency Response — Coming Soon</span>
+        <span class="topic coming-soon">Environmental Safety — Coming Soon</span>
 
-  <a href="ppe.html" class="topic">
-  PPE
-</a>
-
-    PPE
-  </a>
-
- <a href="ppe.html" class="topic">
-  PPE
-</a>>
-
-  <a href="#" class="topic">
-    Confined Space
-  </a>
-
-  <a href="#" class="topic">
-    Fire Safety
-  </a>
-
-  <a href="#" class="topic">
-    Electrical Safety
-  </a>
-
-  <a href="#" class="topic">
-    Risk Assessment
-  </a>
-
-  <a href="#" class="topic">
-    LOTO
-  </a>
-
-  <a href="#" class="topic">
-    Lifting & Rigging
-  </a>
-
-  <a href="#" class="topic">
-    Excavation Safety
-  </a>
-
-  <a href="#" class="topic">
-    Scaffolding
-  </a>
-
-  <a href="#" class="topic">
-    Chemical Safety
-  </a>
-
-  <a href="#" class="topic">
-    Heat Stress
-  </a>
-
-  <a href="#" class="topic">
-    Manual Handling
-  </a>
-
-  <a href="#" class="topic">
-    Emergency Response
-  </a>
-
-  <a href="#" class="topic">
-    Environmental Safety
-  </a>
-<div class="topics">
-
-  <a href="hazard-vs-risk.html" class="topic">
-    Hazard & Risk
-  </a>
-
-  <a href="hse-basics.html" class="topic">
-    HSE Basics
-  </a>
-
-  <a href="#" class="topic">
-    PPE
-  </a>
-
-<a href="situational-awareness.html" class="topic">
-  Situational Awareness
-</a>
-
-
-  <a href="#" class="topic">
-    Working at Height
-  </a>
-
-  <a href="#" class="topic">
-    Confined Space
-  </a>
-
-  <a href="#" class="topic">
-    Fire Safety
-  </a>
-
-  <a href="#" class="topic">
-    Electrical Safety
-  </a>
-
-  <a href="#" class="topic">
-    Risk Assessment
-  </a>
-
-  <a href="#" class="topic">
-    LOTO
-  </a>
-
-  <a href="#" class="topic">
-    Lifting & Rigging
-  </a>
-
-  <a href="#" class="topic">
-    Excavation Safety
-  </a>
-
-  <a href="#" class="topic">
-    Scaffolding
-  </a>
-
-  <a href="#" class="topic">
-    Chemical Safety
-  </a>
-
-  <a href="#" class="topic">
-    Heat Stress
-  </a>
-
-  <a href="#" class="topic">
-    Manual Handling
-  </a>
-
-  <a href="#" class="topic">
-    Emergency Response
-  </a>
-
-  <a href="#" class="topic">
-    Environmental Safety
-  </a>
-
-</div>
-
-</div>
-
-
+      </div>
     </div>
-
   </section>
 
-
-  <!-- CTA -->
-  <section class="section cta" id="about">
-
+  <!-- ARTICLES -->
+  <section class="section alt" id="articles">
     <div class="container">
 
-      <h2>Build a Stronger Safety Culture</h2>
+      <div class="section-heading">
+        <h2>Latest HSE Articles</h2>
+        <p>
+          Practical HSE knowledge, awareness and workplace safety guidance.
+        </p>
+      </div>
 
-      <p>
-        Knowledge is one of the foundations of effective
-        safety awareness. Learn, share and encourage
-        everyone to take responsibility for workplace safety.
-      </p>
+      <div class="articles">
 
-      <a href="#topics" class="btn btn-primary">
-        Start Learning
-      </a>
+        <a href="situational-awareness.html" class="article-card">
+          <div class="article-icon">👀</div>
+          <h3>Situational Awareness</h3>
+          <p>
+            Learn how to stay aware of your surroundings, identify threats
+            and take action before an incident occurs.
+          </p>
+          <span>Read Article →</span>
+        </a>
 
+        <a href="hazard-vs-risk.html" class="article-card">
+          <div class="article-icon">⚠️</div>
+          <h3>Hazard & Risk</h3>
+          <p>
+            Understand the difference between a hazard and a risk and
+            why the distinction matters in workplace safety.
+          </p>
+          <span>Read Article →</span>
+        </a>
+
+        <a href="hse-basics.html" class="article-card">
+          <div class="article-icon">🦺</div>
+          <h3>HSE Basics</h3>
+          <p>
+            Learn the fundamentals of Health, Safety and Environment
+            and why HSE matters in the workplace.
+          </p>
+          <span>Read Article →</span>
+        </a>
+
+        <a href="ppe.html" class="article-card">
+          <div class="article-icon">🪖</div>
+          <h3>Personal Protective Equipment</h3>
+          <p>
+            Learn about PPE, its purpose, selection, inspection and
+            correct use.
+          </p>
+          <span>Read Article →</span>
+        </a>
+
+      </div>
     </div>
-
   </section>
 
+  <!-- ABOUT / CTA -->
+  <section class="section cta" id="about">
+    <div class="container">
+      <h2>Build a Stronger Safety Culture</h2>
+      <p>
+        Knowledge is one of the foundations of effective safety awareness.
+        Learn, share and encourage everyone to take responsibility for
+        workplace safety.
+      </p>
+      <a href="#topics" class="btn btn-primary">Start Learning</a>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer>
+</main>
+
+<footer>
+  <div class="container">
 
     <div class="footer-grid">
 
       <div>
         <h3>🦺 HSE Knowledge Hub</h3>
-
         <p>
-          Practical HSE knowledge and awareness
-          resources for safer workplaces.
+          Practical HSE knowledge and awareness resources for safer workplaces.
         </p>
       </div>
 
-
       <div>
         <h3>Explore</h3>
-
         <a href="#topics">Safety Topics</a>
-        <a href="#">Toolbox Talks</a>
-        <a href="#">HSE Resources</a>
-        <a href="#">HSE Quiz</a>
+        <a href="#resources">HSE Resources</a>
+        <a href="#articles">HSE Articles</a>
       </div>
 
-
       <div>
-        <h3>Information</h3>
-
-        <a href="#about">About Us</a>
-        <a href="#">Contact</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Disclaimer</a>
+        <h3>Available Topics</h3>
+        <a href="hse-basics.html">HSE Basics</a>
+        <a href="hazard-vs-risk.html">Hazard & Risk</a>
+        <a href="ppe.html">PPE</a>
+        <a href="situational-awareness.html">Situational Awareness</a>
       </div>
 
     </div>
-
 
     <div class="copyright">
       © 2026 HSE Knowledge Hub. Educational information only.
+      Always follow applicable laws, standards, procedures and competent professional guidance.
     </div>
 
-  </footer>
-<section class="articles">
-
-  <h2>Latest HSE Articles</h2>
-
-  <p class="section-intro">
-    Practical HSE knowledge, awareness and workplace safety guidance.
-  </p>
-
-
-  <div class="article-grid">
-
-
-    <a href="situational-awareness.html" class="article-card">
-
-      <div class="article-icon">
-        👀
-      </div>
-
-      <h3>Situational Awareness</h3>
-
-      <p>
-        Learn how to stay aware of your surroundings,
-        identify threats and take action before an incident occurs.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="hazard-vs-risk.html" class="article-card">
-
-      <div class="article-icon">
-        ⚠️
-      </div>
-
-      <h3>Hazard & Risk</h3>
-
-      <p>
-        Understand the difference between a hazard and a risk
-        and why the distinction matters in workplace safety.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="hse-basics.html" class="article-card">
-
-      <div class="article-icon">
-        🦺
-      </div>
-
-      <h3>HSE Basics</h3>
-
-      <p>
-        Learn the fundamentals of Health, Safety and Environment
-        and why HSE matters in the workplace.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="ppe.html" class="article-card">
-
-      <div class="article-icon">
-        🪖
-      </div>
-
-      <h3>Personal Protective Equipment</h3>
-
-      <p>
-        Learn about PPE, its purpose, selection, inspection
-        and correct use.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
   </div>
+</footer>
 
-</section>
-
-<section class="articles">
-
-  <h2>Latest HSE Articles</h2>
-
-  <p class="section-intro">
-    Practical HSE knowledge, awareness and workplace safety guidance.
-  </p>
-
-  <div class="article-grid">
-
-    <a href="situational-awareness.html" class="article-card">
-
-      <div class="article-icon">
-        👀
-      </div>
-
-      <h3>Situational Awareness</h3>
-
-      <p>
-        Learn how to stay aware of your surroundings,
-        identify threats and take action before an incident occurs.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="hazard-vs-risk.html" class="article-card">
-
-      <div class="article-icon">
-        ⚠️
-      </div>
-
-      <h3>Hazard & Risk</h3>
-
-      <p>
-        Understand the difference between a hazard and a risk
-        and why the distinction matters in workplace safety.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="hse-basics.html" class="article-card">
-
-      <div class="article-icon">
-        🦺
-      </div>
-
-      <h3>HSE Basics</h3>
-
-      <p>
-        Learn the fundamentals of Health, Safety and Environment
-        and why HSE matters in the workplace.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-
-    <a href="ppe.html" class="article-card">
-
-      <div class="article-icon">
-        🪖
-      </div>
-
-      <h3>Personal Protective Equipment</h3>
-
-      <p>
-        Learn about PPE, its purpose, selection, inspection
-        and correct use.
-      </p>
-
-      <span>Read Article →</span>
-
-    </a>
-
-  </div>
-
-</section>
 </body>
 </html>
